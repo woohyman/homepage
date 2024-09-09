@@ -10,10 +10,9 @@
   	      <h6 class="text_hidden">{{info.job}}</h6>
   	      <ul>
   	        <li  class="text_hidden"><b>出生年月</b> <span>{{info.birth}}</span></li>
-  	        <li  class="text_hidden"><b>电子邮箱</b> <span>{{info.email}}</span></li>
-  	        <li  class="text_hidden"><b>微信号码</b> <span>{{info.wechat}}</span></li>
-  	        <li  class="text_hidden"><b>联系地址</b> <span>{{info.address}}</span></li>
-  	        <li  class="text_hidden"><b>Github</b> <span>{{info.website}}</span></li>
+  	        <li  class="text_hidden"><b>工作年限</b> <span>{{info.wechat}}</span></li>
+  	        <li  class="text_hidden"><b>籍贯地址</b> <span>{{info.address}}</span></li>
+  	        <li  class="text_hidden"><b>技术博客</b> <span>{{info.website}}</span></li>
   	      </ul>
   	    </div>
   	    <div class="clearfix"></div>
@@ -30,11 +29,10 @@ export default {
       info: {
       	"name": "吴剑舞",
       	"job": "安卓/跨平台开发者",
-      	"birth": "19XX-10-08",
-      	"email": "6958XXX46@qq.com",
-      	"wechat": "iteriter",
+      	"birth": "1988-08",
+      	"wechat": "8年",
       	"address": "福建省莆田市",
-      	"website": "https://github.com/woohyman"
+      	"website": "https://blog.csdn.net/woohyman?spm=1000.2115.3001.5343"
       }
     }
   }

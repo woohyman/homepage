@@ -5,12 +5,12 @@
   	  <h1 class="title">{{title}}</h1>
   	  <span class="border"></span>
   	  <div class="content">
-  	    <img src="../common/images/code.png">
-  	    <dl>
-  	      <dt>Contact By Email</dt>
-  	      <dd>Mail1: <a href="mailto:info@example.com">info@example1.com</a></dd>
-  	      <dd>Mail2: <a href="mailto:info@example.com">info@example2.com</a></dd>
-  	    </dl>
+  	    <img src="../common/images/code.jpg" alt="">
+<!--  	    <dl>-->
+<!--  	      <dt>Contact By Email</dt>-->
+<!--  	      <dd>Mail1: <a href="mailto:info@example.com">info@example1.com</a></dd>-->
+<!--  	      <dd>Mail2: <a href="mailto:info@example.com">info@example2.com</a></dd>-->
+<!--  	    </dl>-->
   	  </div>
   	  <p v-text="desc"></p>
   	</div>
