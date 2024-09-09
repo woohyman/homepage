@@ -34,7 +34,7 @@ export default {
       	"email": "6958XXX46@qq.com",
       	"wechat": "iteriter",
       	"address": "福建省莆田市",
-      	"website": "https://vqlai.github.io/dist/#/index"
+      	"website": "https://github.com/woohyman"
       }
     }
   }
