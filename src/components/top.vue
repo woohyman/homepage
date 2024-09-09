@@ -13,7 +13,7 @@
   	        <li  class="text_hidden"><b>电子邮箱</b> <span>{{info.email}}</span></li>
   	        <li  class="text_hidden"><b>微信号码</b> <span>{{info.wechat}}</span></li>
   	        <li  class="text_hidden"><b>联系地址</b> <span>{{info.address}}</span></li>
-  	        <li  class="text_hidden"><b>个人网站</b> <span>{{info.website}}</span></li>
+  	        <li  class="text_hidden"><b>Github</b> <span>{{info.website}}</span></li>
   	      </ul>
   	    </div>
   	    <div class="clearfix"></div>
