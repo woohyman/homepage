@@ -11,7 +11,7 @@
   	      <ul>
   	        <li  class="text_hidden"><b>出生年月</b> <span>{{info.birth}}</span></li>
   	        <li  class="text_hidden"><b>电子邮箱</b> <span>{{info.email}}</span></li>
-  	        <li  class="text_hidden"><b>手机号码</b> <span>{{info.phone}}</span></li>
+  	        <li  class="text_hidden"><b>微信号码</b> <span>{{info.wechat}}</span></li>
   	        <li  class="text_hidden"><b>联系地址</b> <span>{{info.address}}</span></li>
   	        <li  class="text_hidden"><b>个人网站</b> <span>{{info.website}}</span></li>
   	      </ul>
@@ -28,12 +28,12 @@ export default {
   data () {
     return {
       info: {
-      	"name": "I,m cisco lai",
-      	"job": "h5 Developer and Web Engineer",
+      	"name": "吴剑舞",
+      	"job": "安卓/跨平台开发者",
       	"birth": "19XX-10-08",
       	"email": "6958XXX46@qq.com",
-      	"phone": "1772798XXXX",
-      	"address": "深圳市罗湖区xxx",
+      	"wechat": "iteriter",
+      	"address": "福建省莆田市",
       	"website": "https://vqlai.github.io/dist/#/index"
       }
     }
