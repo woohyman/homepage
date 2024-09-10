@@ -29,7 +29,7 @@ export default {
       info: {
       	"name": "吴剑舞",
       	"job": "安卓/跨平台开发者",
-      	"birth": "1988",
+      	"birth": "1988-8",
       	"wechat": "8年",
       	"address": "福建省莆田市",
       	"website": "https://blog.csdn.net/woohyman?spm=1000.2115.3001.5343"
