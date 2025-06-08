@@ -13,7 +13,6 @@
             <span class="click-hint">点击查看详情</span>
           </div>
         </li>
-        <div class="clearfix"></div>
       </ul>
     </div>
   </div>
@@ -59,18 +58,21 @@ export default {
   },
   methods: {
     handleProjectClick(project) {
-      // 可以选择以下几种方式之一：
+      // 检测是否为触摸设备
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-      // 方式1: 直接在新窗口打开项目链接
-      if (project.link) {
-        window.open(project.link, '_blank');
+      if (isTouchDevice) {
+        // 手机端：显示确认对话框
+        const confirmed = confirm(`${project.title}\n${project.description}\n\n是否要打开此项目？`);
+        if (confirmed && project.link) {
+          window.open(project.link, '_blank');
+        }
+      } else {
+        // 桌面端：直接打开链接
+        if (project.link) {
+          window.open(project.link, '_blank');
+        }
       }
-
-      // 方式2: 显示项目详情（可以取消注释使用）
-      // this.showProjectDetails(project);
-
-      // 方式3: 触发自定义事件（如果需要父组件处理）
-      // this.$emit('project-clicked', project);
     },
 
     // 如果需要显示详情模态框，可以添加这个方法
@@ -94,24 +96,38 @@ export default {
   .border{display:block;width: 20%;height: 1px;position:relative;margin:0 auto 30px;background: #8C8989;}
   .border:after{position: absolute;top: 0;left: 30%;content: " ";width: 40%;height: 5px;margin-top:-2px;background: #03a9f4;}
 
-  ul{width: 100%;padding: 4% 0;}
+  ul{
+    width: 100%;
+    padding: 4% 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
   ul li{
-    float: left;
-    width: 20%;
-    margin-right: 5%;
-    height: 80%;
+    flex: 1;
+    min-width: 200px;
+    max-width: calc(25% - 15px);
+    height: auto;
     box-sizing: border-box;
     transition: transform .25s ease;
     position: relative;
     cursor: pointer;
     overflow: hidden;
     border-radius: 8px;
+    margin-bottom: 20px;
   }
-  ul li img{width: 100%;display: block;transition: transform .3s ease;}
+  ul li img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform .3s ease;
+  }
   ul li:hover{
     z-index: 100;
-    -webkit-transform: scale(1.1);
-    transform: scale(1.2);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
     box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
   ul li:hover img{
@@ -159,5 +175,165 @@ export default {
     padding: 5px 10px;
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  /* 响应式设计 - 平板设备 */
+  @media screen and (max-width: 1024px) {
+    .container {
+      padding: 3% 2%;
+    }
+
+    ul li {
+      max-width: calc(50% - 10px);
+      min-width: 250px;
+    }
+
+    .title {
+      font-size: 32px;
+    }
+
+    .project-overlay h3 {
+      font-size: 16px;
+    }
+
+    .project-overlay p {
+      font-size: 13px;
+    }
+  }
+
+  /* 响应式设计 - 手机设备 */
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 2% 4%;
+    }
+
+    .title {
+      font-size: 28px;
+      text-align: center;
+    }
+
+    ul {
+      flex-direction: column;
+      gap: 15px;
+      padding: 2% 0;
+    }
+
+    ul li {
+      max-width: 100%;
+      min-width: 100%;
+      margin-bottom: 15px;
+    }
+
+    ul li img {
+      height: 180px;
+    }
+
+    /* 手机端使用点击而非悬停 */
+    ul li:active {
+      transform: scale(1.02);
+    }
+
+    ul li:hover {
+      transform: none;
+    }
+
+    /* 手机端默认显示项目信息 */
+    .project-overlay {
+      opacity: 0.8;
+      background: rgba(3, 169, 244, 0.85);
+      padding: 15px;
+    }
+
+    .project-overlay h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .project-overlay p {
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .click-hint {
+      font-size: 11px;
+      padding: 4px 8px;
+    }
+  }
+
+  /* 响应式设计 - 小屏手机 */
+  @media screen and (max-width: 480px) {
+    .container {
+      padding: 2% 3%;
+    }
+
+    .title {
+      font-size: 24px;
+    }
+
+    .tip {
+      font-size: 16px;
+      padding: 4px 15px;
+    }
+
+    ul li img {
+      height: 160px;
+    }
+
+    .project-overlay {
+      padding: 12px;
+    }
+
+    .project-overlay h3 {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .project-overlay p {
+      font-size: 11px;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .click-hint {
+      font-size: 10px;
+      padding: 3px 6px;
+    }
+  }
+
+  /* 超小屏设备优化 */
+  @media screen and (max-width: 360px) {
+    .container {
+      padding: 1% 2%;
+    }
+
+    .title {
+      font-size: 22px;
+    }
+
+    ul {
+      gap: 12px;
+    }
+
+    ul li {
+      margin-bottom: 12px;
+    }
+
+    ul li img {
+      height: 140px;
+    }
+
+    .project-overlay {
+      padding: 10px;
+    }
+
+    .project-overlay h3 {
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .project-overlay p {
+      font-size: 10px;
+      margin-bottom: 6px;
+    }
   }
 </style>
