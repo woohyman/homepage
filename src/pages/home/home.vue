@@ -1,61 +1,88 @@
 <template>
-  <div class="home">
-  	<top>
-  		<vue-particles
-  		  color="#ffffff"
-  		  :particleOpacity="0.7"
-  		  linesColor="#ffffff"
-  		  :particlesNumber="isMobile ? 30 : 80"
-  		  shapeType="circle"
-  		  :particleSize="isMobile ? 3 : 5"
-  		  :linesWidth="isMobile ? 1 : 2"
-  		  :lineLinked="true"
-  		  :lineOpacity="0.4"
-  		  :linesDistance="isMobile ? 1 : 2"
-  		  :moveSpeed="isMobile ? 2 : 3"
-  		  :hoverEffect="!isMobile"
-  		  hoverMode="grab"
-  		  :clickEffect="!isMobile"
-  		  clickMode="push"
-  		>
-  		</vue-particles>
-  	</top>
-  	<about/>
-  	<experience/>
-  	<skill/>
-  	<project/>
-  	<bottom/>
+  <div class="modern-home">
+    <!-- 现代化英雄区域 -->
+    <ModernHero :info="personalInfo" />
+
+    <!-- 关于我区域 -->
+    <section id="about" class="section">
+      <about/>
+    </section>
+
+    <!-- 工作经验区域 -->
+    <section id="experience" class="section">
+      <experience/>
+    </section>
+
+    <!-- 技能展示区域 -->
+    <section id="skills" class="section">
+      <skill/>
+    </section>
+
+    <!-- 项目展示区域 -->
+    <section id="projects" class="section">
+      <project/>
+    </section>
+
+    <!-- 联系方式区域 -->
+    <section id="contact" class="section">
+      <bottom/>
+    </section>
   </div>
 </template>
 
 <script>
-import top from '@/components/top'
-import bottom from '@/components/bottom'
-import about from '@/components/about'
-import experience from '@/components/experience'
-import skill from '@/components/skill'
-import project from '@/components/project'
+import ModernHero from '@/components/modern/ModernHero.vue'
+import bottom from '@/components/bottom.vue'
+import about from '@/components/about.vue'
+import experience from '@/components/experience.vue'
+import skill from '@/components/skill.vue'
+import project from '@/components/project.vue'
 export default {
-  name: 'home',
+  name: 'ModernHome',
   data () {
     return {
-      isMobile: false
+      personalInfo: {
+        name: 'Your Name',
+        job: 'Full Stack Developer',
+        description: '热爱技术，专注于创造优秀的用户体验和高质量的代码。擅长前端开发、后端架构设计，致力于用技术改变世界。',
+        experience: '3+',
+        projects: '50+',
+        clients: '20+',
+        birth: '1995-01',
+        wechat: '3年',
+        address: '北京市',
+        website: 'https://your-blog.com'
+      }
     }
   },
   mounted() {
-    this.checkMobile();
-    window.addEventListener('resize', this.checkMobile);
-  },
-  beforeDestroy() {
-    window.removeEventListener('resize', this.checkMobile);
+    this.setupScrollAnimation();
   },
   methods: {
-    checkMobile() {
-      this.isMobile = window.innerWidth <= 768;
+    setupScrollAnimation() {
+      // 简化的滚动动画
+      const options = {
+        threshold: 0.1,
+        rootMargin: '0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      }, options);
+
+      // 观察所有section
+      this.$nextTick(() => {
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => observer.observe(section));
+      });
     }
   },
   components:{
-  	top,
+    ModernHero,
   	bottom,
   	about,
   	experience,
@@ -67,17 +94,33 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-	.home{
-		width: 100%;
-		height: auto;
-		overflow-x: hidden;
-	}
+.modern-home {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
-	/* 响应式优化 */
-	@media screen and (max-width: 768px) {
-		.home {
-			padding: 0;
-		}
-	}
+.section {
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  display: block;
+  padding: 0;
+}
+
+/* 移除背景样式，让组件自己控制背景 */
+
+/* 确保section正常显示 */
+.section {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  .modern-home {
+    padding: 0;
+  }
+}
 </style>
 

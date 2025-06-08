@@ -74,6 +74,8 @@ export default {
 		background-color: #fff;
 		text-align: center;
 		overflow: hidden;
+		will-change: transform;
+		transform: translateZ(0);
 	}
   .container{
 		height: auto;

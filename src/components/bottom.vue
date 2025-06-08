@@ -41,6 +41,8 @@ export default {
 		padding: 4% 5%;
 		position: relative;
 		overflow: hidden;
+		will-change: transform;
+		transform: translateZ(0);
 	}
 
 	.bottom::before {

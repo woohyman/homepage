@@ -47,6 +47,8 @@ export default {
 	background-color: #03a9f4;
 	transition: width 1.5s ease-in-out;
 	border-radius: 6px;
+	will-change: width;
+	transform: translateZ(0);
 }
 
 .progress-bar.active {

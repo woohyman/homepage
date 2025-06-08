@@ -50,6 +50,8 @@ export default {
 		background-color: #f5f5f5;
 		text-align: center;
 		overflow: hidden;
+		will-change: transform;
+		transform: translateZ(0);
 	}
   .container{
 		height: auto;

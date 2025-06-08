@@ -41,109 +41,126 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-	.top{
-		width:100%;
-		height:auto;
-		background: url('../common/images/banner.jpg') no-repeat center 0px;
-		background-size: cover;
-		color:#fff;
-		min-height: 100vh;
-		display: flex;
-		align-items: center;
-	}
-	.container{
-		width:100%;
-		height:auto;
-		background: url('../common/images/dott.png') repeat;
-		position: relative;
-	}
-	.banner{
-		max-width: 1200px;
-		padding: 10% 5%;
-		margin: 0 auto;
-		display: flex;
-		align-items: center;
-		gap: 40px;
-	}
-	.avator{
-		flex: 0 0 40%;
-		text-align: center;
-		position: relative;
-		z-index: 10;
-	}
-	.avator img{
-		width: 74%;
-		max-width: 300px;
-		border: 5px solid rgba(255, 255, 255, 0.68);
-		border-radius: 50%;
-	}
-	.info{
-		flex: 1;
-		text-align: left;
-	}
-	.info .hello{
-		position:relative;
-		display:inline-block;
-		padding: 4px 16px;
-		font-size: 16px;
-		color:#fff;
-		background-color: #03a9f4;
-		font-family: 'Overlock', cursive;
-		vertical-align: top;
-		box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-	}
+	.top{width:100%;height:auto;background: url('../common/images/banner.jpg') no-repeat center 0px;background-size: cover;color:#fff;}
+	.container{width:100%;height:auto;background: url('../common/images/dott.png') repeat;position: relative;}
+	.banner{max-width: 1200px;padding: 10% 0;margin: 0 auto;}
+	.avator{float:left;width: 40%;text-align: center;position: relative;z-index: 10;}
+	.avator img{width: 74%;border: 5px solid rgba(255, 255, 255, 0.68);}
+	.info{float:right;width: 60%;text-align: left;}
+	.info .hello{position:relative;display:inline-block;padding: 4px 16px;font-size: 16px;color:#fff;background-color: #03a9f4;font-family: 'Overlock', cursive;vertical-align: top; box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
 	/*小三角*/
-	.info .hello:after{
-		position: absolute;
-		width: 0;
-		height: 0;
-		left:6px;
-		bottom:-4px;
-		content: '';
-		border-style: solid;
-		border-width: 6px 6px 0 6px;
-		border-color: #03a9f4 transparent;
+	.info .hello:after{position: absolute;width: 0;height: 0;left:6px;bottom:-4px;content: '';border-style: solid;border-width: 6px 6px 0 6px;border-color: #03a9f4 transparent;}
+	h1{font-size: 34px;font-family: 'Overlock', cursive;}
+	h6{margin-top: 6px;font-size:14px;font-family: 'Overlock', cursive;color: #C7C7C7;letter-spacing: 4px;}
+	.info ul{margin-top: 10px;border-top: 1px solid #fff;}
+	.info ul li{font-size: 20px;margin-top: 26px;}
+	.info b{display:inline-block;font-family: 'Overlock', cursive;margin-right: 10px;}
+	.info ul li span:hover{color: #03a9f4;}
+	#particles-js{position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;}
+
+	/* 响应式设计 - 平板 */
+	@media screen and (max-width: 1024px) {
+		.banner {
+			max-width: 90%;
+			padding: 8% 3%;
+		}
+
+		.avator {
+			width: 35%;
+		}
+
+		h1 {
+			font-size: 30px;
+		}
+
+		.info ul li {
+			font-size: 18px;
+		}
 	}
-	h1{
-		font-size: 34px;
-		font-family: 'Overlock', cursive;
-		margin: 20px 0;
+
+	/* 响应式设计 - 手机端 */
+	@media screen and (max-width: 768px) {
+		.banner {
+			padding: 5% 4%;
+		}
+
+		.avator {
+			float: none;
+			width: 100%;
+			text-align: center;
+			margin-bottom: 30px;
+		}
+
+		.avator img {
+			width: 60%;
+			max-width: 200px;
+		}
+
+		.info {
+			float: none;
+			width: 100%;
+			text-align: center;
+		}
+
+		h1 {
+			font-size: 28px;
+			margin: 15px 0;
+		}
+
+		h6 {
+			font-size: 13px;
+			letter-spacing: 2px;
+		}
+
+		.info .hello {
+			font-size: 14px;
+			padding: 3px 12px;
+		}
+
+		.info ul {
+			margin-top: 20px;
+			padding-top: 15px;
+		}
+
+		.info ul li {
+			font-size: 16px;
+			margin-top: 15px;
+			text-align: center;
+		}
+
+		.info b {
+			margin-right: 8px;
+		}
 	}
-	h6{
-		margin-top: 6px;
-		font-size:14px;
-		font-family: 'Overlock', cursive;
-		color: #C7C7C7;
-		letter-spacing: 4px;
-	}
-	.info ul{
-		margin-top: 10px;
-		border-top: 1px solid #fff;
-		padding-top: 20px;
-	}
-	.info ul li{
-		font-size: 20px;
-		margin-top: 26px;
-		display: flex;
-		align-items: center;
-		flex-wrap: wrap;
-	}
-	.info b{
-		display:inline-block;
-		font-family: 'Overlock', cursive;
-		margin-right: 10px;
-		min-width: 80px;
-	}
-	.info ul li span:hover{
-		color: #03a9f4;
-	}
-	#particles-js{
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: 1;
+
+	/* 响应式设计 - 小屏手机 */
+	@media screen and (max-width: 480px) {
+		.banner {
+			padding: 4% 3%;
+		}
+
+		.avator img {
+			width: 50%;
+			max-width: 150px;
+		}
+
+		h1 {
+			font-size: 24px;
+		}
+
+		h6 {
+			font-size: 12px;
+		}
+
+		.info .hello {
+			font-size: 12px;
+			padding: 2px 10px;
+		}
+
+		.info ul li {
+			font-size: 14px;
+			margin-top: 12px;
+		}
 	}
 
 	/* 响应式设计 - 平板 */

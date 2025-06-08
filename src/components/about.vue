@@ -70,6 +70,8 @@ export default {
 		background-color: #f5f5f5;
 		text-align: center;
 		overflow: hidden;
+		will-change: transform;
+		transform: translateZ(0);
 	}
   .container{
 		height: auto;
@@ -133,6 +135,9 @@ export default {
 		line-height: 300px;
 		overflow: hidden;
 		text-align: center;
+		will-change: transform;
+		transform: translateZ(0);
+		backface-visibility: hidden;
 	}
   .swiper-pagination{
 		top:46%;

@@ -1,63 +1,67 @@
 <template>
-  <div id="app">
+  <div id="app" class="modern-app">
+    <ModernNav />
     <router-view/>
-    <span class="top-btn" @click="scrollToTop" v-show="topBtn"></span>
+    <BackToTop />
   </div>
 </template>
 
 <script>
+import ModernNav from '@/components/modern/ModernNav.vue'
+import BackToTop from '@/components/modern/BackToTop.vue'
+
 export default {
   name: 'App',
-  data(){
-    return{
-      topBtn: false
-    }
-  },
-  mounted(){
-    setTimeout(()=>{
-      this.scrollToTop()
-      // 添加滚动事件
-      window.addEventListener('scroll', this.scroll)
-    },20)
-  },
-  methods:{
-    scrollToTop(){
-      document.documentElement.scrollTop = 0
-    },
-    scroll() {
-      // 坑点：无法获取到滚动条滚动的间距
-      // 页面指定了DTD，即指定了DOCTYPE时，使用document.documentElement
-      // 页面没有DTD，即没指定DOCTYPE时，使用document.body
-      // IE和Firefox都是如此
-      // 因为index页面加了<!DOCTYPE html>，所以要使用document.documentElement来获取
-      // console.log(document.documentElement.clientHeight) // 获取客户端可视区域高度
-      // console.log(document.documentElement.offsetHeight ) // 获取客户端可视区域高度 (包括边线的高) 
-      // console.log(document.documentElement.scrollTop) // 获取滚动条滚动的距离
-      // console.log(document.documentElement.scrollHeight) // 获取网页总高度
-      this.topBtn = document.documentElement.scrollTop > document.documentElement.clientHeight ? true : false 
-    }
+  components: {
+    ModernNav,
+    BackToTop
   }
 }
 </script>
 
 <style>
-#app {
+@import './styles/modern-design.css';
+@import './styles/performance.css';
+
+.modern-app {
   width: 100%;
-  height: auto;
+  min-height: 100vh;
+  background: var(--gray-50);
+  overflow-x: hidden;
 }
-#app .top-btn{
-  width: 30px;
-  height: 54px;
-  position: fixed;
-  bottom:15%;
-  right:6%;
-  content: '';
-  background: url('./common/images/top.png') no-repeat;
-  background-position: 0 0;
-  background-size: 100%;
-  cursor: pointer;
+
+/* 深色主题 */
+.modern-app.dark {
+  background: var(--gray-900);
+  color: var(--gray-100);
 }
-#app .top-btn:hover{
-  background-position: 0 100%;
+
+/* 页面过渡动画 */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
+
+/* 滚动行为优化 */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* 选择文本样式 */
+::selection {
+  background: var(--primary);
+  color: white;
+}
+
+/* 焦点样式 */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 </style>
