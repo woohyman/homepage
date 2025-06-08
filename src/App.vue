@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="modern-app">
+  <div id="app" class="studio-app">
     <ModernNav />
     <router-view/>
     <BackToTop />
@@ -23,17 +23,54 @@ export default {
 @import './styles/modern-design.css';
 @import './styles/performance.css';
 
-.modern-app {
+.studio-app {
   width: 100%;
   min-height: 100vh;
-  background: var(--gray-50);
+  background: white;
   overflow-x: hidden;
 }
 
 /* 深色主题 */
-.modern-app.dark {
-  background: var(--gray-900);
-  color: var(--gray-100);
+.studio-app.dark {
+  background: #0f172a;
+  color: #f1f5f9;
+}
+
+/* 深色主题下的导航栏 */
+.studio-app.dark .modern-nav {
+  background: rgba(15, 23, 42, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.studio-app.dark .nav-scrolled {
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.studio-app.dark .nav-brand {
+  color: #f1f5f9;
+}
+
+.studio-app.dark .nav-link {
+  color: #cbd5e1;
+}
+
+.studio-app.dark .nav-link:hover,
+.studio-app.dark .nav-link.active {
+  color: #667eea;
+}
+
+.studio-app.dark .mobile-menu {
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.studio-app.dark .mobile-nav-link {
+  color: #f1f5f9;
+}
+
+.studio-app.dark .mobile-nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #667eea;
 }
 
 /* 页面过渡动画 */

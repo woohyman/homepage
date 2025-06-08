@@ -7,7 +7,7 @@
           <div class="icon-circle"></div>
           <div class="icon-dot"></div>
         </div>
-        <span class="brand-text">Portfolio</span>
+        <span class="brand-text">创新设计工作室</span>
       </div>
       
       <!-- Desktop Menu -->
@@ -68,17 +68,18 @@ export default {
       isMobileOpen: false,
       menuItems: [
         { id: 'hero', label: '首页', href: '#hero' },
-        { id: 'about', label: '关于', href: '#about' },
-        { id: 'experience', label: '经历', href: '#experience' },
-        { id: 'skills', label: '技能', href: '#skills' },
-        { id: 'projects', label: '项目', href: '#projects' },
-        { id: 'contact', label: '联系', href: '#contact' }
+        { id: 'about', label: '关于工作室', href: '#about' },
+        { id: 'services', label: '服务介绍', href: '#services' },
+        { id: 'products', label: '产品展示', href: '#products' },
+        { id: 'cases', label: '客户案例', href: '#cases' },
+        { id: 'contact', label: '联系我们', href: '#contact' }
       ]
     }
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
     this.observeSections();
+    this.initTheme();
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll);
@@ -89,7 +90,15 @@ export default {
     },
     toggleTheme() {
       this.isDark = !this.isDark;
+      // 在document.documentElement上切换dark类
       document.documentElement.classList.toggle('dark', this.isDark);
+      // 在App组件上也切换dark类
+      const appElement = document.getElementById('app');
+      if (appElement) {
+        appElement.classList.toggle('dark', this.isDark);
+      }
+      // 保存主题设置到localStorage
+      localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
     },
     toggleMobileMenu() {
       this.isMobileOpen = !this.isMobileOpen;
@@ -121,8 +130,25 @@ export default {
         },
         { threshold: 0.3 }
       );
-      
+
       sections.forEach(section => observer.observe(section));
+    },
+    initTheme() {
+      // 从localStorage读取保存的主题设置
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        this.isDark = savedTheme === 'dark';
+      } else {
+        // 如果没有保存的设置，检查系统偏好
+        this.isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+
+      // 应用主题
+      document.documentElement.classList.toggle('dark', this.isDark);
+      const appElement = document.getElementById('app');
+      if (appElement) {
+        appElement.classList.toggle('dark', this.isDark);
+      }
     }
   }
 }
