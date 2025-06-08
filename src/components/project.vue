@@ -27,30 +27,30 @@ export default {
       title: '我的项目',
       projects: [
         {
-          title: '电商网站',
-          description: '基于Vue.js的现代化电商平台',
-          image: '../common/images/web1.jpg',
-          link: 'https://github.com/yourusername/ecommerce-project',
-          technologies: ['Vue.js', 'Node.js', 'MongoDB']
+          title: '应用商店',
+          description: '下载你喜欢的应用！',
+          image: require('../common/images/project1.jpg'),
+          link: 'https://fbxdadsofwvfktbcbbos.supabase.co/storage/v1/object/public/apk//appstore_demo.apk',
+          technologies: ['Android', 'Java', 'Firebase']
         },
         {
           title: '博客系统',
           description: '响应式个人博客管理系统',
-          image: '../common/images/web1.jpg',
+          image: require('../common/images/project2.jpg'),
           link: 'https://github.com/yourusername/blog-system',
           technologies: ['React', 'Express', 'MySQL']
         },
         {
           title: '任务管理器',
           description: '团队协作任务管理工具',
-          image: '../common/images/web1.jpg',
+          image: require('../common/images/project3.jpg'),
           link: 'https://github.com/yourusername/task-manager',
           technologies: ['Angular', 'Spring Boot', 'PostgreSQL']
         },
         {
           title: '数据可视化',
           description: '企业数据分析可视化平台',
-          image: '../common/images/web1.jpg',
+          image: require('../common/images/project4.jpg'),
           link: 'https://github.com/yourusername/data-visualization',
           technologies: ['D3.js', 'Python', 'Flask']
         }
